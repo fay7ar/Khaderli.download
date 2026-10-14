@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحميل تطبيق خضرلي</title>
+<style>
+  body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .box {
+    background: #fff;
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 30px 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .logo {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+  
+  h1 {
+    color: #2e7d32;
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  p.desc {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  
+  /* ===== الأزرار (نفس التصميم، لونان مختلفان) ===== */
+  .btn {
+    display: block;
+    padding: 14px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: inherit;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  
+  .btn.green {
+    background: #2e7d32;
+    border: 1px solid #1b5e20;
+  }
+  .btn.green:hover {
+    background: #1b5e20;
+  }
+  
+  .btn.blue {
+    background: #1976d2;
+    border: 1px solid #0d47a1;
+  }
+  .btn.blue:hover {
+    background: #0d47a1;
+  }
+  
+  footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  /* ===== نافذة الدليل ===== */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; right: 0; left: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 999;
+  }
+  
+  .overlay.active {
+    display: block;
+  }
+  
+  .guide {
+    background: #fff;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: right;
+    position: relative;
+  }
+  
+  .guide h2 {
+    color: #2e7d32;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+  
+  .guide .intro {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  
+  .close-x {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    padding: 5px;
+  }
+  
+  .close-x:hover {
+    color: #333;
+  }
+  
+  .section {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px 18px;
+    margin-bottom: 12px;
+    background: #fafafa;
+  }
+  
+  .section h3 {
+    color: #1976d2;
+    font-size: 16px;
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .section ol {
+    margin: 0;
+    padding-right: 20px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #444;
+  }
+  
+  .section ol li {
+    margin-bottom: 5px;
+  }
+  
+  .hint {
+    display: inline-block;
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 1px solid #bbdefb;
+  }
+  
+  .continue-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    background: #1976d2;
+    border: 1px solid #0d47a1;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  
+  .continue-btn:hover {
+    background: #0d47a1;
+  }
+  
+  .cancel-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    margin-top: 8px;
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    border-radius: 5px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  
+  .cancel-btn:hover {
+    background: #eee;
+  }
+</style>
+</head>
+<body>
+
+<div class="box">
+  
+  <img src="https://up6.cc/2026/10/179197782872931.png" alt="خضرلي" class="logo">
+  
+  <h1>خضرلي</h1>
+  <p class="desc">خضروات وفواكه طازجة</p>
+  
+  <a href="https://api.betadrop.app/api/guest/download/EYRK66" class="btn green" target="_blank">
+    تحميل التطبيق للأندرويد
+  </a>
+  
+  <button class="btn blue" onclick="openGuide()">
+    نسخة المتصفح (iPhone وغيرها)
+  </button>
+  
+  <footer>© 2026 خضرلي</footer>
+  
+</div>
+
+
+<!-- ===== نافذة الدليل ===== -->
+<div class="overlay" id="guideOverlay">
+  <div class="guide">
+    
+    <button class="close-x" onclick="closeGuide()">✕</button>
+    
+    <h2>إضافة خضرلي للشاشة الرئيسية</h2>
+    <p class="intro">
+      يمكنك استخدام خضرلي كتطبيق كامل من خلال إضافته إلى الشاشة الرئيسية لهاتفك.
+      اتبع الخطوات حسب نوع جهازك:
+    </p>
+    
+    <div class="section">
+      <h3>🍏 لمستخدمي iPhone (Safari)</h3>
+      <ol>
+        <li>افتح الرابط في متصفح <b>Safari</b>.</li>
+        <li>اضغط على زر <span class="hint">المشاركة ⎙</span> في الأسفل.</li>
+        <li>اسحب للأسفل واختر <b>"إضافة إلى الشاشة الرئيسية"</b>.</li>
+        <li>اضغط <b>"إضافة"</b> في الأعلى.</li>
+      </ol>
+    </div>
+    
+    <div class="section">
+      <h3>🤖 لمستخدمي Android (Chrome)</h3>
+      <ol>
+        <li>افتح الرابط في متصفح <b>Chrome</b>.</li>
+        <li>اضغط على زر <span class="hint">⋮</span> في الأعلى.</li>
+        <li>اختر <b>"إضافة إلى الشاشة الرئيسية"</b>.</li>
+        <li>اضغط <b>"إضافة"</b> للتأكيد.</li>
+      </ol>
+    </div>
+    
+    <div class="section">
+      <h3>📱 متصفحات أخرى (Huawei / Samsung)</h3>
+      <ol>
+        <li>افتح الرابط في المتصفح.</li>
+        <li>اضغط على قائمة المتصفح <span class="hint">☰</span> أو <span class="hint">⋮</span>.</li>
+        <li>اختر <b>"إضافة إلى الشاشة الرئيسية"</b>.</li>
+        <li>أكّد الإضافة.</li>
+      </ol>
+    </div>
+    
+    <button class="continue-btn" onclick="goToBrowser()">
+      متابعة إلى نسخة المتصفح
+    </button>
+    
+    <button class="cancel-btn" onclick="closeGuide()">
+      إلغاء
+    </button>
+    
+  </div>
+</div>
+
+
+<script>
+  function openGuide() {
+    document.getElementById('guideOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeGuide() {
+    document.getElementById('guideOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  function goToBrowser() {
+    window.location.href = 'https://fay7ar.github.io/Khaderli/';
+  }
+  
+  document.getElementById('guideOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeGuide();
+  });
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeGuide();
+  });
+</script>
+
+</body>
+</html>
